@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Form, Button } from 'react-bootstrap';
 import {UserContext} from '../components/context';
 import Card from '../components/context';
 import '../App.css';
@@ -8,11 +7,11 @@ function Withdraw(){
   const ctx = React.useContext(UserContext);
   console.log(isNaN(ctx.currentUserIndex))
 
-  const [status, setStatus] = React.useState('');
+  const [status, setStatus]     = React.useState('');
   const [withdrew, setWithdrew] = React.useState (0);
-  const [enable, setEnable] = React.useState(false);
+  const [enable, setEnable]     = React.useState(false);
 
-  const [profile, setProfile] = React.useState(() => {
+  const [display, setDisplay] = React.useState(() => {
     if (ctx.currentUserIndex === null ) {
     return false;
    } else {
@@ -25,10 +24,10 @@ function Withdraw(){
 
    if ( withdrew < 0) {
     setStatus("All withdrawal should be greater than 40")
-    setEnable(false)
+    setEnable(false);
    } 
     else if (withdrew.match(numbers) || withdrew > 0){
-      if (withdrew > context.clients[ctx.currentUserIndex].balance) {
+      if (withdrew > ctx.clients[ctx.currentUserIndex].balance) {
         setStatus("Your withdrawal cannot be greater than your balance")
         setEnable(false);
         return;

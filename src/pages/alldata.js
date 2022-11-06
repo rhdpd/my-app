@@ -1,15 +1,15 @@
 
 import React from 'react';
 import {UserContext} from '../components/context';
-import {Table} from 'react-bootstrap';
 import Card from '../components/context';
 import '../App.css';
 
 function AllData(){
   const ctx = React.useContext(UserContext);
+  console.log(ctx);
   return (
   <>
-    <h5>All Data in Store</h5>
+    <h5>All Data in Bank</h5>
     <div class = "alldata">
       <table class ="badBankTable">
         <thead>
@@ -20,7 +20,7 @@ function AllData(){
            </tr>
         </thead>
         <tbody>
-          {clients.map((clients,index) => (
+          {ctx.clients.map((clients,index) => (
             <tr key={index}>
            <td> {clients.name} </td>
            <td> {clients.email} </td>
@@ -34,3 +34,5 @@ function AllData(){
     
   );
 }
+
+export default AllData;
