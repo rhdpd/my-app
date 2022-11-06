@@ -5,14 +5,14 @@ import '../App.css'
 
 
 function Deposit(){
-  const context = React.useContext(UserContext);
+  const ctx = React.useContext(UserContext);
 
   const [status, setStatus] = React.useState('');
   const [deposit, setDeposit] = React.useState(0);
   const [enable, setEnable] = React.useState(false);
 
   const [display, setDisplay] = React.useState(() => {
-    if(context.currentUserIndex === null ) {
+    if(ctx.currentUserIndex === null ) {
       return false;
     }  else {
        return true;
@@ -29,7 +29,7 @@ function Deposit(){
    else if (deposit.match(numbers) || deposit >0) {
     console.log ("deposit is successful");
     setStatus("You have successfully deposited $" + deposit);
-    context.clients[context.currentUserIndex].balance = context.clientsp[context.currentUserIndex].balance + Number(deposit);
+    ctx.clients[ctx.currentUserIndex].balance = ctx.clients[ctx.currentUserIndex].balance + Number(deposit);
     setEnable(false);
     setDeposit(0);
    } else {
