@@ -11,7 +11,7 @@ function Deposit(){
   const [deposit, setDeposit]   = React.useState(0);
   const [enable, setEnable]     = React.useState(false);
 
-  const [display, setDisplay] = React.useState(() => {
+  const [show, setShow] = React.useState(() => {
     if(ctx.currentUserIndex === null ) {
       return false;
     }  else {
@@ -43,7 +43,29 @@ function outStandingBalance(b) {
   setDeposit(b.currentTarget.value);
 }
   return (
-    <h1>Deposit</h1>
+      <div className="card-success">
+      <div></div>
+     <Card
+        bgcolor="secondary"
+        cardstyle="medium"
+        header="Deposit"
+        status={status}
+        body={ show ? (  
+                <>
+                <h5>Hello, {ctx.clients[ctx.currentUserIndex].name}</h5>
+                <h6>Your current balance is: ${ctx.clients[ctx.currentUserIndex].balance}</h6>
+                Deposit<br/>
+                <input type="number" className="form-control" id="deposit" placeholder="Enter amount to deposit" value={deposit} onChange={b => outStandingBalance(b)}/><br/>
+                <button type="submit" disabled={!enable} className="btn btn-light" onClick={formSubmit}>Make Deposit</button>
+                </>
+              ):(
+                <>
+                <h5>Refresh to make another Deposit</h5>
+                </>
+              )}
+      />
+      <div></div>
+      </div>
   )
 }
 export default Deposit;

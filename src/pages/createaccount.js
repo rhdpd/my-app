@@ -9,13 +9,12 @@ function CreateAccount(){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [enable, setEnable]     = React.useState(false);
+  //const [enable, setEnable]     = React.useState(false);
+
   const cxt = React.useContext(UserContext);  
 
   function validate(field, label){
       if (!field) {
-        //setStatus('Error: ' + label);
-        //setTimeout(() => setStatus(''),3000);
         return false;
       }
       return true;
@@ -40,17 +39,22 @@ function CreateAccount(){
     setShow(false);
   }    
 
+  
   function clearForm(){
     setName('');
     setEmail('');
     setPassword('');
     setShow(true);
-    setEnable(false);
+    //setEnable(false);
   }
 
   return (
+    <div className = "successCard">
+      <div></div>
+    
     <Card
       bgcolor="primary"
+      cardstyle="medium"
       header="Create Account"
       status={status}
       body={show ? (  
@@ -69,8 +73,8 @@ function CreateAccount(){
               <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
               </>
             )}
-    />
+              />
+      </div>
   )
-}
-
+            }
 export default CreateAccount;
