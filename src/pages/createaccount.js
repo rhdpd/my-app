@@ -9,7 +9,7 @@ function CreateAccount(){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-  const context = React.useContext(UserContext);  
+  const cxt = React.useContext(UserContext);  
 
   function validate(field, label){
       if (!field) {
@@ -35,7 +35,7 @@ function CreateAccount(){
       return; 
     } 
 
-    context.clients.push({name,email,password,balance:100});
+    cxt.clients.push({name,email,password,balance:100});
     setShow(false);
   }    
 
