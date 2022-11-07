@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {HashRouter, Routes, Route} from 'react-router-dom';
 import App from './App';
-import { UserContext } from './components/context';
+import { UserContext } from './components/context'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -16,8 +16,10 @@ import Deposit from './pages/deposit';
 import Withdraw from './pages/withdraw';
 import AllData from './pages/alldata';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+//const root = ReactDOM.createRoot(document.getElementById('root'));
+//root.render(
+function App(){
+    return (
     <HashRouter>
       <div className="App">
       <UserContext.Provider value={{users:[{name:'abel',email:'abel@mit.edu',password:'secret',balance:100}]}}>
@@ -36,10 +38,10 @@ root.render(
   );
 
 
-// ReactDOM.render(
-//   <Spa/>,
-//   document.getElementById('root')
-// );
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
+);
 
 
 //   <React.StrictMode>
@@ -47,7 +49,4 @@ root.render(
 //   </React.StrictMode>
 // );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//reportWebVitals();
+
