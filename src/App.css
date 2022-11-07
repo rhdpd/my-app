@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+.alldata {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+
+.offset {
+  margin-left: 5px;
+}
+
+.padded {
+  padding: 3px;
+}
+
+.thick {
+  font-weight: italics;
+}
+
+.color-nav {
+  background-color: #f2f4ef;
+}
+
+.nav-link:hover {
+  color: rgb(207, 207, 209) !important;
+  font-weight: bold;
+}
+
+.centeredGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.alldataMYGEE {
+  display: flex;
+  justify-content: center;
+}

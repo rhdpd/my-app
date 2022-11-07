@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <NavBar />
-      <br></br>
+      <br/>
       <div className="centered">
-        <Outlet></Outlet>
+        <Outlet/>
       </div>
     </div>
   );

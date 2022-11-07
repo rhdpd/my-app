@@ -10,14 +10,7 @@ function Deposit(){
   const [status, setStatus]     = React.useState('');
   const [deposit, setDeposit]   = React.useState(0);
   const [enable, setEnable]     = React.useState(false);
-
-  const [show, setShow] = React.useState(() => {
-    if(ctx.currentUserIndex === null ) {
-      return false;
-    }  else {
-       return true;
-    }
-  });
+  const [show]                  = React.useState('')
 
   function formSubmit() {
     var numbers = /^[0-9]+./;
