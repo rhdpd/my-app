@@ -1,11 +1,12 @@
+
 //Overall import for React app
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {HashRouter, Routes, Route} from 'react-router-dom';
-import App from './App';
+import {React} from 'react'
+import {createRoot} from 'react-dom/client'
+import {HashRouter, Routes, Route} from 'react-router-dom'
+import App from './App'
 import { UserContext } from './components/context'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './index.css'
 
 //import reportWebVitals from './reportWebVitals';
 
@@ -16,9 +17,8 @@ import Deposit from './pages/deposit';
 import Withdraw from './pages/withdraw';
 import AllData from './pages/alldata';
 
-//const root = ReactDOM.createRoot(document.getElementById('root'));
-//root.render(
-function App(){
+
+function Spa(){
     return (
     <HashRouter>
       <div className="App">
@@ -36,17 +36,21 @@ function App(){
       </div>     
     </HashRouter>
   );
+};
 
+// const container = ReactDOM.createRoot(document.getElementById('root'));
+// const root = ReactDOM.hydrateRoot(<App name="/Spa"/>);
 
-ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById('root');
+const container = createRoot(rootElement);
 
+container.render(<Spa/>);
+container.unmount();
 
+// ReactDOM.createRoot(
 //   <React.StrictMode>
-//     <Spa/>
-//   </React.StrictMode>
-// );
+//   <Spa/>,
+//   </React.StrictMode>,
+//   document.getElementById('root'));
 
 

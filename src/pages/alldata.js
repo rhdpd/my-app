@@ -1,8 +1,9 @@
 
-import React from 'react';
-import {UserContext} from '../components/context';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import {UserContext} from '../components/context' 
 //import Card from '../components/context';
-import '../App.css';
+import '../App.css'
 
 function AllData(){
   const ctx = React.useContext(UserContext);

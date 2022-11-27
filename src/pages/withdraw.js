@@ -1,7 +1,7 @@
-import React from 'react';
-import {UserContext} from '../components/context';
-import Card from '../components/context';
-import '../App.css';
+import React from 'react'
+import {UserContext} from '../components/context'
+import Card from '../components/context'
+import '../App.css'
 
 function Withdraw(){
   const ctx = React.useContext(UserContext);

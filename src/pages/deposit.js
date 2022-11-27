@@ -1,6 +1,6 @@
-import React from 'react';
-import {UserContext} from '../components/context';
-import Card from '../components/context';
+import React from 'react'
+import {UserContext} from '../components/context'
+import Card from '../components/context'
 import '../App.css'
 
 
