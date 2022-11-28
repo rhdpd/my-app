@@ -1,6 +1,6 @@
-import React from 'react'
-import {Navbar, Container, Nav} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
+import React from 'react';
+import {Navbar, Container, Nav} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
 import '../App.css'
 
 function NavBar(){
@@ -14,9 +14,9 @@ function NavBar(){
         <Navbar.Collapse id ="basic-navbar-nav">
           <Nav className = "nav-menu">
             <LinkContainer to = "/"><Nav.Link>Home</Nav.Link></LinkContainer>
-            <LinkContainer to = "createanaccount"><Nav.Link>Create Account</Nav.Link></LinkContainer>
+            <LinkContainer to = "createaccount"><Nav.Link>Create Account</Nav.Link></LinkContainer>
             <LinkContainer to = "deposit"><Nav.Link>Deposit</Nav.Link></LinkContainer>
-            <LinkContainer to = "withdrew"><Nav.Link>Withdraw</Nav.Link></LinkContainer>
+            <LinkContainer to = "withdraw"><Nav.Link>Withdraw</Nav.Link></LinkContainer>
             <LinkContainer to = "alldata"><Nav.Link>All Data</Nav.Link></LinkContainer>
           </Nav>
         </Navbar.Collapse>

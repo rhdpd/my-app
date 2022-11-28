@@ -1,17 +1,21 @@
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import {UserContext} from '../components/context' 
-//import Card from '../components/context';
-import '../App.css'
+import React from 'react';
+import { UserContext } from '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/components/context';
+import Card from '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/components/context';
+import '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/App.css';
 
 function AllData(){
   const ctx = React.useContext(UserContext);
   console.log(ctx);
   return (
-  <>
-    <h5>All Data in Bank</h5>
-    <div class = "alldata">
+    <div className="allmybankdata">
+    <Card
+      bgcolor="secondary"
+      carddesign="big"
+      header="All Bad Bank Data"
+      width="50rem"
+      body = {
+
       <table class ="badBankTable">
         <thead>
            <tr> 
@@ -30,9 +34,9 @@ function AllData(){
           ))}
         </tbody>
       </table>
+      }
+    />
     </div>
-</>
-    
   );
 }
 

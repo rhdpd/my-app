@@ -1,7 +1,8 @@
-import React from 'react'
-import {UserContext} from '../components/context'
-import Card from '../components/context'
-import '../App.css'
+import React from 'react';
+import { UserContext } from '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/components/context';
+import Card from '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/components/context';
+import '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/App.css';
+
 
 
 function Deposit(){
@@ -10,10 +11,27 @@ function Deposit(){
   const [status, setStatus]     = React.useState('');
   const [deposit, setDeposit]   = React.useState(0);
   const [enable, setEnable]     = React.useState(false);
-  const [show]                  = React.useState('')
+  
+  const [show, setShow]         = React.useState(() => {
+    if (ctx.currentUserIndex === null) {
+      return false;
+    } else {
+      return true;
+    }
+  });
 
   function formSubmit() {
     var numbers = /^[0-9]+./;
+    var timestamp = Date.now()
+    var date = new Date(timestamp);
+
+    var eventDate = date.getDate()+
+    "/"+(date.getMonth()+1)+
+    "/"+date.getFullYear()+
+    " "+date.getHours()+
+    ":"+date.getMinutes()+
+    ":"+date.getSeconds();
+  console.log(eventDate);
 
   if (deposit <0) {
     setStatus("All deposits should be greater than $0")
@@ -23,6 +41,7 @@ function Deposit(){
     console.log ("deposit is successful");
     setStatus("You have successfully deposited $" + deposit);
     ctx.clients[ctx.currentUserIndex].balance = ctx.clients[ctx.currentUserIndex].balance + Number(deposit);
+    ctx.clients[ctx.currentUserIndex].history.unshift({action:"Deposit", amount: deposit, balance: ctx.clients[ctx.currentUserIndex].balance, eventDate})
     setEnable(false);
     setDeposit(0);
    } else {
@@ -36,19 +55,19 @@ function outStandingBalance(b) {
   setDeposit(b.currentTarget.value);
 }
   return (
-      <div className="card-success">
+      <div className="centerGrid">
       <div></div>
      <Card
         bgcolor="secondary"
-        cardstyle="medium"
+        carddesign="medium"
         header="Deposit"
         status={status}
         body={ show ? (  
                 <>
-                <h5>Hello, {ctx.clients[ctx.currentUserIndex].name}</h5>
+                <h4>Hello, {ctx.clients[ctx.currentUserIndex].name}</h4>
                 <h6>Your current balance is: ${ctx.clients[ctx.currentUserIndex].balance}</h6>
                 Deposit<br/>
-                <input type="number" className="form-control" id="deposit" placeholder="Enter amount to deposit" value={deposit} onChange={b => outStandingBalance(b)}/><br/>
+                <input type="number" className="form-control" id="deposit" placeholder="Enter amount to deposit" value={deposit} outStandingBalance={b => outStandingBalance(b)}/><br/>
                 <button type="submit" disabled={!enable} className="btn btn-light" onClick={formSubmit}>Make Deposit</button>
                 </>
               ):(

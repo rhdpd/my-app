@@ -1,7 +1,7 @@
-import React from 'react'
-import {UserContext} from '../components/context'
-import Card from '../components/context'
-import '../App.css'
+import React from 'react';
+import { UserContext } from '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/components/context';
+import Card from '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/components/context';
+import '/Users/patipatni/Desktop/sandboxMIT/myBadBankApp/src/App.css';
 
 function Withdraw(){
   const ctx = React.useContext(UserContext);
@@ -11,7 +11,7 @@ function Withdraw(){
   const [withdrew, setWithdrew] = React.useState (0);
   const [enable, setEnable]     = React.useState(false);
 
-  const [show] = React.useState(() => {
+  const [show, setShow] = React.useState(() => {
     if (ctx.currentUserIndex === null ) {
     return false;
    } else {
@@ -21,20 +21,31 @@ function Withdraw(){
 
    function formSubmit() {
     var numbers = /^[0-9]+./;
+    var timestamp = Date.now()
+        var date = new Date(timestamp);
+
+        var eventDate = date.getDate()+
+        "/"+(date.getMonth()+1)+
+        "/"+date.getFullYear()+
+        " "+date.getHours()+
+        ":"+date.getMinutes()+
+        ":"+date.getSeconds();
+      console.log(eventDate);
 
    if ( withdrew < 0) {
-    setStatus("All withdrawal should be greater than 40")
+    setStatus("All withdrawal should be greater than $0")
     setEnable(false);
    } 
     else if (withdrew.match(numbers) || withdrew > 0){
       if (withdrew > ctx.clients[ctx.currentUserIndex].balance) {
-        setStatus("Your withdrawal cannot be greater than your balance")
+        setStatus("Your withdrawal cannot be greater than your account balance")
         setEnable(false);
         return;
       }
     console.log("Withdrawal successful");
     setStatus ("You have made a successful withdrawal of $" + withdrew);
     ctx.clients[ctx.currentUserIndex].balance = ctx.clients[ctx.currentUserIndex].balance - Number(withdrew);
+    ctx.clients[ctx.currentUserIndex].history.unshift({action:"Withdrew", amount: withdrew, balance: ctx.clients[ctx.currentUserIndex].balance, eventDate})
     setEnable(false);
     setWithdrew(0);
     }  else {
@@ -50,16 +61,16 @@ function Withdraw(){
   
 
   return (
-    <div className="card-success">
+    <div className="centerGrid">
     <div></div>
    <Card
       bgcolor="secondary"
-      cardstyle="medium"
+      carddesign="medium"
       header="Withdraw"
       status={status}
       body={show ? (  
               <>
-              <h5>Hello, {ctx.clients[ctx.currentUserIndex].name}</h5>
+              <h4>Hello, {ctx.clients[ctx.currentUserIndex].name}</h4>
               <h6>Your current balance is: ${ctx.clients[ctx.currentUserIndex].balance}</h6>
               Withdrawal<br/>
               <input type="number" className="form-control" id="withdrew" placeholder="Enter amount to withdrew" value={withdrew} onChange={b => outStandingBalance(b)}/><br/>

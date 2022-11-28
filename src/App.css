@@ -14,18 +14,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #3a3b3d;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(36, 34, 34);
 }
 
 .App-link {
-  color: #61dafb;
+  color: #0c1cf0;
 }
 
 @keyframes App-logo-spin {
@@ -62,12 +62,12 @@
   font-weight: bold;
 }
 
-.centeredGrid {
+.centerGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.alldataMYGEE {
+.allmybankdata {
   display: flex;
   justify-content: center;
 }
